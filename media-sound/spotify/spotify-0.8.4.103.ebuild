@@ -17,7 +17,7 @@ SRC_URI="
 LICENSE="Spotify"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="pulseaudio"
+IUSE="pulseaudio gnome"
 
 DEPEND=""
 RDEPEND="${DEPEND}
@@ -53,7 +53,8 @@ RDEPEND="${DEPEND}
 		x11-libs/gtk+:2
 		dev-libs/nss
 		dev-libs/glib:2
-		pulseaudio? ( >=media-sound/pulseaudio-0.9.21 )"
+		pulseaudio? ( >=media-sound/pulseaudio-0.9.21 )
+		gnome? ( gnome-extra/gnome-integration-spotify )"
 
 RESTRICT="mirror strip"
 
@@ -74,6 +75,12 @@ src_prepare() {
 		-e 's/\(lib\(nss3\|nssutil3\|smime3\).so\).1d/\1.12/g' \
 		-e 's/\(lib\(plc4\|nspr4\).so\).0d\(.\)/\1.9\3\3/g' \
 		usr/share/spotify/libcef.so || die "sed failed"
+	# Fix desktop entry to launch spotify-dbus.py for GNOME integration
+	if use gnome ; then
+	sed -i \
+		-e 's/spotify \%U/spotify-dbus.py \%U/g' \
+		usr/share/applications/spotify.desktop || die "sed failed"
+	fi
 }
 
 src_install() {
