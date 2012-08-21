@@ -4,6 +4,7 @@ mrpdaemon Gentoo overlay
 This is my Gentoo overlay containing the following packages:
 
 * Spotify with GNOME integration
+* Brother HL-2270DW printer drivers for CUPS
 
 ## Installing
 
