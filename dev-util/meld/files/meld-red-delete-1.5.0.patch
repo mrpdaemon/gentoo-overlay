@@ -1,0 +1,11 @@
+--- meld-1.5.0-orig/meld/diffutil.py	2011-02-28 12:43:15.704204984 -0800
++++ meld-1.5.0/meld/diffutil.py	2011-02-28 12:45:21.839204983 -0800
+@@ -55,7 +55,7 @@
+ 
+ opcode_reverse = {
+     "replace"  : "replace",
+-    "insert"   : "delete",
++    "insert"   : "conflict",
+     "delete"   : "insert",
+     "conflict" : "conflict",
+     "equal"    : "equal"

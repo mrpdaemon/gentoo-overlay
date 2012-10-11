@@ -6,6 +6,8 @@ This is my Gentoo overlay containing the following packages:
 * Spotify with GNOME integration
 * Brother HL-2270DW printer drivers for CUPS
 * FUSE-based MTP filesystem for connecting to Android devices (jmtpfs)
+* GNOME scripts for automounting encfs volumes (gnome-encfs)
+* Meld diff viewer with custom patches
 
 ## Installing
 
