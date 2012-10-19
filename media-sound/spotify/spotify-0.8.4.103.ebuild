@@ -17,7 +17,7 @@ SRC_URI="
 LICENSE="Spotify"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="pulseaudio gnome"
+IUSE="pulseaudio gnome pax_kernel"
 
 DEPEND=""
 RDEPEND="${DEPEND}
@@ -84,6 +84,15 @@ src_prepare() {
 }
 
 src_install() {
+	if use pax_kernel; then
+		pax-mark Cm "${ED}"/opt/bin/${PN} || die
+		eqawarn "You have set USE=pax_kernel meaning that you intend to run"
+		eqawarn "${PN} under a PaX enabled kernel.  To do so, we must modify"
+		eqawarn "the ${PN} binary itself and this *may* lead to breakage!  If"
+		eqawarn "you suspect that ${PN} is being broken by this modification,"
+		eqawarn "please open a bug."
+	fi
+
 	dodoc usr/share/doc/spotify-client/changelog.Debian.gz
 	dodoc usr/share/doc/spotify-client/copyright
 	insinto /usr/share/applications
