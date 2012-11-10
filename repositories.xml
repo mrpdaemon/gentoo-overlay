@@ -1,0 +1,18 @@
+<repositories version="1.0">
+	<repo
+		  quality="experimental"
+		  status="unofficial">
+		<name>mrpdaemon</name>
+		<description lang="en">Mark Pariente's Gentoo overlay</description>
+		<longdescription lang="en">
+			Ebuilds for stuff I use that is missing from portage
+		</longdescription>
+		<homepage>https://github.com/mrpdaemon/gentoo-overlay</homepage>
+		<owner type="person">
+			<email>markpariente@gmail.com</email>
+			<name>Mark Pariente</name>
+		</owner>
+		<source type="git">git://github.com/mrpdaemon/gentoo-overlay.git</source>
+		<source type="git">git+ssh://git@github.com:mrpdaemon/gentoo-overlay.git</source>
+	</repo>
+</repositories>
