@@ -1,0 +1,10 @@
+--- jmtpfs.cpp.orig	2012-05-12 01:17:33.000000000 +0200
++++ jmtpfs.cpp	2012-12-21 20:23:27.186016098 +0100
+@@ -32,6 +32,7 @@
+ #include <sstream>
+ #include <iomanip>
+ #include <assert.h>
++#include <unistd.h>
+ 
+ #define JMTPFS_VERSION "0.4"
+ 
