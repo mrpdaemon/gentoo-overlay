@@ -7,10 +7,12 @@ EAPI=4
 DESCRIPTION="Advanced cross-platform Google Drive client"
 HOMEPAGE="https://www.insynchq.com/"
 SRC_URI=" 
-   x86? ( !gnome? ( http://s.insynchq.com/builds/insync-beta-ubuntu_${PV}_i386.deb )
-           gnome? ( http://s.insynchq.com/builds/insync-beta-gnome-cinnamon-common_${PV}_i386.deb ) )
-   amd64? ( !gnome? ( http://s.insynchq.com/builds/insync-beta-ubuntu_${PV}_amd64.deb )
-            gnome? ( http://s.insynchq.com/builds/insync-beta-gnome-cinnamon-common_${PV}_amd64.deb ) )
+	x86? ( gnome? ( http://s.insynchq.com/builds/insync-beta-gnome-cinnamon-common_${PV}_i386.deb )
+	       !gnome? ( kde? ( http://s.insynchq.com/builds/insync-beta-kde_${PV}_i386.deb )
+	                 !kde? ( http://s.insynchq.com/builds/insync-beta-ubuntu_${PV}_i386.deb ) ) )
+	amd64? ( gnome? ( http://s.insynchq.com/builds/insync-beta-gnome-cinnamon-common_${PV}_amd64.deb )
+	         !gnome? ( kde? ( http://s.insynchq.com/builds/insync-beta-kde_${PV}_amd64.deb )
+	                   !kde? ( http://s.insynchq.com/builds/insync-beta-ubuntu_${PV}_amd64.deb ) ) )
    gnome? ( http://s.insynchq.com/builds/insync-beta-gnome_0.9.40_all.deb )
 "
 
@@ -18,8 +20,9 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 DEPEND=""
 RDEPEND="${DEPEND} \
-         gnome? ( dev-python/nautilus-python )"
-IUSE="gnome"
+         gnome? ( dev-python/nautilus-python )
+         kde? ( kde-base/kdelibs )"
+IUSE="gnome kde"
 
 src_unpack() { 
 	mkdir ${S}
@@ -33,12 +36,16 @@ src_unpack() {
 	if use amd64 ; then
 		if use gnome ; then
 			unpack insync-beta-gnome-cinnamon-common_${PV}_amd64.deb
+		elif use kde ; then
+			unpack insync-beta-kde_${PV}_amd64.deb
 		else
 			unpack insync-beta-ubuntu_${PV}_amd64.deb
 		fi
 	else
 		if use gnome ; then
 			unpack insync-beta-gnome-cinnamon-common_${PV}_i386.deb
+		elif use kde ; then
+			unpack insync-beta-kde_${PV}_i386.deb
 		else
 			unpack insync-beta-ubuntu_${PV}_i386.deb
 		fi
