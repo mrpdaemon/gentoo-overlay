@@ -60,3 +60,9 @@ src_install() {
 	echo "SEARCH_DIRS_MASK=\"/usr/lib*/insync\"" > "${T}/70${PN}" || die
 	insinto "/etc/revdep-rebuild" && doins "${T}/70${PN}" || die
 }
+
+pkg_postinst() {
+	elog "To automatically start insync add 'insync --gnome' or 'insync --kde'"
+	elog "to your session startup scripts. GNOME users can also choose to enable"
+	elog "the insync extension via gnome-tweak-tool."
+}
