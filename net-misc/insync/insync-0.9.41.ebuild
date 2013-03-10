@@ -7,10 +7,10 @@ EAPI=4
 DESCRIPTION="Advanced cross-platform Google Drive client"
 HOMEPAGE="https://www.insynchq.com/"
 SRC_URI=" 
-   x86? ( !gnome? ( http://s.insynchq.com/builds/insync-beta-ubuntu_0.9.41_i386.deb ) 
-           gnome? ( http://s.insynchq.com/builds/insync-beta-gnome-cinnamon-common_0.9.41_i386.deb ) )
-   amd64? ( !gnome? ( http://s.insynchq.com/builds/insync-beta-ubuntu_0.9.41_amd64.deb ) 
-            gnome? ( http://s.insynchq.com/builds/insync-beta-gnome-cinnamon-common_0.9.41_amd64.deb ) )
+   x86? ( !gnome? ( http://s.insynchq.com/builds/insync-beta-ubuntu_${PV}_i386.deb )
+           gnome? ( http://s.insynchq.com/builds/insync-beta-gnome-cinnamon-common_${PV}_i386.deb ) )
+   amd64? ( !gnome? ( http://s.insynchq.com/builds/insync-beta-ubuntu_${PV}_amd64.deb )
+            gnome? ( http://s.insynchq.com/builds/insync-beta-gnome-cinnamon-common_${PV}_amd64.deb ) )
    gnome? ( http://s.insynchq.com/builds/insync-beta-gnome_0.9.40_all.deb )
 "
 
@@ -32,15 +32,15 @@ src_unpack() {
 
 	if use amd64 ; then
 		if use gnome ; then
-			unpack insync-beta-gnome-cinnamon-common_0.9.41_amd64.deb
+			unpack insync-beta-gnome-cinnamon-common_${PV}_amd64.deb
 		else
-			unpack insync-beta-ubuntu_0.9.41_amd64.deb
+			unpack insync-beta-ubuntu_${PV}_amd64.deb
 		fi
 	else
 		if use gnome ; then
-			unpack insync-beta-gnome-cinnamon-common_0.9.41_i386.deb
+			unpack insync-beta-gnome-cinnamon-common_${PV}_i386.deb
 		else
-			unpack insync-beta-ubuntu_0.9.41_i386.deb
+			unpack insync-beta-ubuntu_${PV}_i386.deb
 		fi
 	fi
 
