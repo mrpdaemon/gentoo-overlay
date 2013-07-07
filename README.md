@@ -8,6 +8,7 @@ This is my Gentoo overlay containing the following packages:
 * GNOME scripts for automounting encfs volumes (gnome-encfs)
 * Meld diff viewer with custom patches
 * InSync Google Drive sync client
+* Turkish language dictionary support for aspell
 
 ## Installing
 
