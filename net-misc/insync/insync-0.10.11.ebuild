@@ -57,4 +57,3 @@ pkg_postinst() {
 	elog "startup scripts. GNOME users can also choose to enable"
 	elog "the insync extension via gnome-tweak-tool."
 }
-
