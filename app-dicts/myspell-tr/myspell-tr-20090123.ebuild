@@ -1,8 +1,8 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/myspell-tr/myspell-tr-20130123.ebuild,v 1.1 2013/07/07 13:30:59 mrpdaemon Exp $
+# $Header: $
 
-EAPI=4
+EAPI=5
 
 MYSPELL_DICT=(
 	"tr_TR.aff"
@@ -17,12 +17,11 @@ SRC_URI="https://tr-spell.googlecode.com/files/dict_aff_5000_suffix_1130000_word
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-src_unpack() {
-	myspell-r2_src_unpack
-
-	mv ${WORKDIR}/tr.dic ${WORKDIR}/tr_TR.dic
-	mv ${WORKDIR}/tr.aff ${WORKDIR}/tr_TR.aff
+src_prepare() {
+	# Rename to proper country_LANG format
+	mv "${WORKDIR}"/tr.dic "${WORKDIR}"/tr_TR.dic
+	mv "${WORKDIR}"/tr.aff "${WORKDIR}"/tr_TR.aff
 }
