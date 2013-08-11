@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>maintainer-wanted@gentoo.org</email>
+</maintainer>
+<use>
+	<flag name='nautilus'>File manager integration with <pkg>gnome-base/nautilus</pkg>.</flag>
+	<flag name='dolphin'>File manager integration with <pkg>kde-base/dolphin</pkg>.</flag>
+	<flag name='thunar'>File manager integration with <pkg>xfce-base/thunar</pkg>.</flag>
+</use>
+</pkgmetadata>
