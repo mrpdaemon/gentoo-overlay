@@ -3,6 +3,7 @@ mrpdaemon Gentoo overlay
 
 This is my Gentoo overlay containing the following packages:
 
+* Scripts I use for maintaining my Gentoo systems (mrpdaemon-gentoo-scripts)
 * Brother HL-2270DW printer drivers for CUPS
 * FUSE-based MTP filesystem for connecting to Android devices (jmtpfs)
 * GNOME scripts for automounting encfs volumes (gnome-encfs)
