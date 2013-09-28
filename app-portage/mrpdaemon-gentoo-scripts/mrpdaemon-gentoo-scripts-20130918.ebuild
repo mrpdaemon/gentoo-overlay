@@ -14,7 +14,10 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND=""
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	app-portage/eix
+	app-portage/layman
+	app-portage/gentoolkit"
 
 src_install() {
 	dosbin gentoo-update.sh
