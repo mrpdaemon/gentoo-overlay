@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/meld/meld-1.7.5.ebuild,v 1.1 2013/09/01 22:09:39 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/meld/meld-1.8.1.ebuild,v 1.1 2013/09/28 20:37:09 pacho Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -63,13 +63,13 @@ src_prepare() {
 	gnome2_src_prepare
 }
 
-src_configure() {
-	:
-}
-
 src_compile() {
 	epatch ${FILESDIR}/meld-red-delete-1.7.3.patch
 	emake || die "make failed"
+}
+
+src_configure() {
+	:
 }
 
 src_install() {
