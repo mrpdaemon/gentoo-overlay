@@ -23,4 +23,6 @@ src_install() {
 	dosbin gentoo-update.sh
 	dosbin kernel-upgrade.sh
 	dosbin portage-cgroup
+	dosbin kernel-cleanup.sh
+	dosbin maint-gentoo.sh
 }
