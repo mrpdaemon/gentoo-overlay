@@ -1,0 +1,11 @@
+diff -r -u fontconfig-infinality-20130404-orig/infinality/infinality.conf fontconfig-infinality-20130404/infinality/infinality.conf
+--- fontconfig-infinality-20130404-orig/infinality/infinality.conf	2013-10-18 01:42:00.493487613 -0700
++++ fontconfig-infinality-20130404/infinality/infinality.conf	2013-10-18 01:42:37.003486312 -0700
+@@ -98,7 +98,7 @@
+ 	<!-- Some may need to set this to 96 though -->
+ 	<match target="pattern">
+ 		<edit name="dpi" mode="assign">
+-			<double>96</double>
++			<double>72</double>
+ 		</edit>
+ 	</match>
