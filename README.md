@@ -7,7 +7,8 @@ This is my Gentoo overlay containing the following packages:
 * Brother HL-2270DW printer drivers for CUPS
 * FUSE-based MTP filesystem for connecting to Android devices (jmtpfs)
 * GNOME scripts for automounting encfs volumes (gnome-encfs)
-* Meld diff viewer with custom patches
+* Meld diff viewer with patch to show deletions as red
+* gtksourceview-2 with patch to change default style to mrpdaemon/gtksourceview-theme
 * InSync Google Drive sync client
 * Turkish language dictionary support for aspell/hunspell
 * GTK+ WoL (Wake on LAN) client gwakeonlan

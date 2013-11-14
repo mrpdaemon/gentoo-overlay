@@ -1,0 +1,65 @@
+diff -r -u gtksourceview-2.10.5-orig/gtksourceview/language-specs/classic.xml gtksourceview-2.10.5/gtksourceview/language-specs/classic.xml
+--- gtksourceview-2.10.5-orig/gtksourceview/language-specs/classic.xml	2013-11-13 16:15:37.856107100 -0800
++++ gtksourceview-2.10.5/gtksourceview/language-specs/classic.xml	2013-11-13 16:16:22.734114810 -0800
+@@ -38,37 +38,48 @@
+   <color name="red"        value="#FF0000"/>
+   <color name="yellow"     value="#FFFF00"/>
+   <color name="purple"     value="#A020F0"/>
++  <color name="blue1"                       value="#000090"/>
++  <color name="blue2"                       value="#86ABD9"/>
++  <color name="blue3"                       value="#99D7FF"/>
++  <color name="red1"                        value="#661709"/>
++  <color name="brown1"                      value="#553500"/>
++  <color name="green1"                      value="#005200"/>
++  <color name="gray1"                       value="#505050"/>
++  <color name="gray2"                       value="#DCDCDC"/>
+ 
+   <!-- Bracket Matching -->
+-  <style name="bracket-match"               foreground="#white" background="#grey" bold="true"/>
+-  <style name="bracket-mismatch"            foreground="#white" background="#red" bold="true"/>
++  <style name="bracket-match"               foreground="#white" background="blue3"/>
++  <style name="bracket-mismatch"            foreground="#white" background="#red"/>
+ 
+   <!-- Search Matching -->
+   <style name="search-match"                background="yellow"/>  
+   
+   <!-- Comments -->
+-  <style name="def:comment"                 foreground="blue"/>
+-  <style name="def:shebang"                 foreground="blue" bold="true"/>
++  <style name="def:comment"                 foreground="green1"/>
++  <style name="def:shebang"                 foreground="green1" bold="true"/>
+   <style name="def:doc-comment-element"     italic="true"/>
+ 
+   <!-- Constants -->
+-  <style name="def:constant"                foreground="magenta"/>
+-  <style name="def:special-char"            foreground="violet"/>
++  <style name="def:constant"                foreground="red1"/>    
++  <style name="def:string"                  foreground="brown1"/>
++  <style name="def:special-char"            foreground="brown1"/>
++  <style name="def:special-constant"        foreground="red1"/>
++  <style name="def:floating-point"          foreground="red1"/>
+ 
+   <!-- Identifiers -->
+-  <style name="def:identifier"              foreground="cyan"/>
++  <style name="def:identifier"              foreground="blue1" bold="true"/>
+ 
+   <!-- Statements -->
+-  <style name="def:statement"               foreground="bordeaux" bold="true"/>
++  <style name="def:statement"               foreground="blue1" bold="false"/>
+ 
+   <!-- Types -->
+-  <style name="def:type"                    foreground="green" bold="true"/>
++  <style name="def:type"                    foreground="blue1" bold="true"/> 
+ 
+   <!-- Others -->
+-  <style name="def:preprocessor"            foreground="purple"/>
+-  <style name="def:error"                   background="red" bold="true"/>
+-  <style name="def:note"                    foreground="blue" background="yellow" bold="true"/>
+-  <style name="def:underlined"              italic="true" underline="true"/>
++  <style name="def:preprocessor"            foreground="blue1" bold="true"/>
++  <style name="def:error"                   background="#red" bold="false"/>
++  <style name="def:note"                    foreground="blue1" background="yellow" bold="true"/>
++  <style name="def:underlined"              underline="true" bold="false"/>
+ 
+   <!-- Language specific styles -->
+   <style name="diff:added-line"             foreground="#008B8B"/>
