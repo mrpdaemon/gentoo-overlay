@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/meld/meld-1.8.1.ebuild,v 1.1 2013/09/28 20:37:09 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/meld/meld-1.8.4.ebuild,v 1.1 2014/02/06 23:01:54 eva Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -29,9 +29,9 @@ RDEPEND="
 	gnome? ( >=dev-python/gconf-python-2.22:2 )
 "
 DEPEND="${RDEPEND}
+	app-text/scrollkeeper
 	dev-util/gtk-doc-am
 	dev-util/intltool
-	app-text/scrollkeeper
 "
 
 src_prepare() {
@@ -63,13 +63,13 @@ src_prepare() {
 	gnome2_src_prepare
 }
 
+src_configure() {
+	:
+}
+
 src_compile() {
 	epatch ${FILESDIR}/meld-red-delete-1.7.3.patch
 	emake || die "make failed"
-}
-
-src_configure() {
-	:
 }
 
 src_install() {
