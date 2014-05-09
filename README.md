@@ -12,6 +12,7 @@ This is my Gentoo overlay containing the following packages:
 * Turkish language dictionary support for aspell/hunspell
 * GTK+ WoL (Wake on LAN) client gwakeonlan
 * fontconfig-infinality with bohoomil's configuration from Arch
+* Latest version of the Pidgin SIPE plugin
 
 ## Installing
 
