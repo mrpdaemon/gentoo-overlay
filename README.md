@@ -11,8 +11,6 @@ This is my Gentoo overlay containing the following packages:
 * InSync Google Drive sync client
 * Turkish language dictionary support for aspell/hunspell
 * GTK+ WoL (Wake on LAN) client gwakeonlan
-* fontconfig-infinality with bohoomil's configuration from Arch
-* gnome-terminal with transparent background support
 * california - a calendar application for GNOME 3
 
 ## Installing
