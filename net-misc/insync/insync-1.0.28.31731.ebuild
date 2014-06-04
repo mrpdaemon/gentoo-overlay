@@ -11,7 +11,9 @@ SRC_URI="
 	amd64?    ( http://s.insynchq.com/builds/insync_${PV}_amd64.deb )
 	nautilus? ( http://s.insynchq.com/builds/insync-nautilus_${PV}_all.deb )
 	dolphin?  ( http://s.insynchq.com/builds/insync-dolphin_${PV}_all.deb )
-	thunar?   ( http://s.insynchq.com/builds/insync-thunar_${PV}_all.deb )"
+	thunar?   ( http://s.insynchq.com/builds/insync-thunar_${PV}_all.deb )
+	nemo?   ( http://s.insynchq.com/builds/insync-nemo_${PV}_all.deb )
+	caja?   ( http://s.insynchq.com/builds/insync-caja_${PV}_all.deb )"
 
 SLOT="0"
 KEYWORDS="-* ~x86 ~amd64"
@@ -19,8 +21,10 @@ DEPEND=""
 RDEPEND="${DEPEND}
 	nautilus? ( dev-python/nautilus-python )
 	dolphin? ( kde-base/dolphin )
-	thunar? ( dev-python/thunarx-python )"
-IUSE="nautilus dolphin thunar"
+	thunar? ( dev-python/thunarx-python )
+	nemo? ( gnome-extra/nemo )
+	caja? ( mate-base/caja )"
+IUSE="nautilus dolphin thunar nemo caja"
 
 src_unpack() {
 	mkdir "${S}"
@@ -40,6 +44,10 @@ src_unpack() {
 		unpack insync-dolphin_"${PV}"_all.deb
 	elif use thunar ; then
 		unpack insync-thunar_"${PV}"_all.deb
+	elif use nemo ; then
+		unpack insync-nemo_"${PV}"_all.deb
+	elif use caja ; then
+		unpack insync-caja_"${PV}"_all.deb
 	fi
 
 	unpack ./data.tar.gz
