@@ -13,6 +13,7 @@ This is my Gentoo overlay containing the following packages:
 * GTK+ WoL (Wake on LAN) client gwakeonlan
 * fontconfig-infinality with bohoomil's configuration from Arch
 * gnome-terminal with transparent background support
+* california - a calendar application for GNOME 3
 
 ## Installing
 
