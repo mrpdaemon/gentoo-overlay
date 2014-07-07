@@ -14,6 +14,7 @@ This is my Gentoo overlay containing the following packages:
 * california - a calendar application for GNOME 3
 * gtkparasite - a GTK+ debugging tool
 * Corebird - a GTK+3 Twitter client
+* Polari - a GTK+3 IRC client
 
 ## Installing
 
