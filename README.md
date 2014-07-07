@@ -13,6 +13,7 @@ This is my Gentoo overlay containing the following packages:
 * GTK+ WoL (Wake on LAN) client gwakeonlan
 * california - a calendar application for GNOME 3
 * gtkparasite - a GTK+ debugging tool
+* Corebird - a GTK+3 Twitter client
 
 ## Installing
 
