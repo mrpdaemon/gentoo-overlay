@@ -12,6 +12,7 @@ This is my Gentoo overlay containing the following packages:
 * Turkish language dictionary support for aspell/hunspell
 * GTK+ WoL (Wake on LAN) client gwakeonlan
 * california - a calendar application for GNOME 3
+* gtkparasite - a GTK+ debugging tool
 
 ## Installing
 
