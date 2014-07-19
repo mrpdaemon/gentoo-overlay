@@ -3,10 +3,10 @@
 # $Header: $
 
 EAPI=5
-# Corebird doesn't work correctly with out of source builds
-CMAKE_IN_SOURCE_BUILD=1
 
-inherit eutils cmake-utils gnome2-utils
+VALA_MIN_API_VERSION=0.22
+
+inherit eutils autotools gnome2-utils vala
 
 DESCRIPTION="Native GTK+3 Twitter client"
 HOMEPAGE="http://corebird.baedert.org/"
@@ -15,27 +15,30 @@ SRC_URI="https://github.com/baedert/corebird/archive/${PV}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="debug glade"
+IUSE="debug glade gstreamer"
 
-RDEPEND=">=x11-libs/gtk+-3.9
-	>=dev-libs/glib-2.38
-	net-libs/rest:0.7
+RDEPEND="dev-db/sqlite:3
+	>=dev-libs/glib-2.40
 	dev-libs/json-glib
-	x11-libs/libnotify
-	dev-db/sqlite:3
+	>=dev-libs/libgee-0.8
+	gstreamer? ( media-libs/gst-plugins-base )
 	>=net-libs/libsoup-2.42.3.1
-	>=dev-libs/libgee-0.8"
+	net-libs/rest:0.7
+	>=x11-libs/gtk+-3.12"
 DEPEND="${RDEPEND}
-	dev-lang/vala:0.22
-	>=dev-util/cmake-2.6"
+	$(vala_depend)
+	virtual/pkgconfig"
+
+src_prepare() {
+	eautoreconf
+	vala_src_prepare
+}
 
 src_configure() {
-	local mycmakeargs=(
-		"-DGSETTINGS_COMPILE=no"
-		$(cmake-utils_use debug DEBUG)
-		$(cmake-utils_use glade CATALOG)
-	)
-	cmake-utils_src_configure
+	econf \
+		$(use_enable debug ) \
+		$(use_enable glade catalog ) \
+		$(use_enable gstreamer video )
 }
 
 pkg_preinst() {
