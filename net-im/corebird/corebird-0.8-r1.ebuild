@@ -35,10 +35,15 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_enable debug ) \
-		$(use_enable glade catalog ) \
-		$(use_enable gstreamer video )
+	cb_conf="$(use_enable debug ) \
+		$(use_enable glade catalog )"
+
+	if ! use gstreamer ; then
+		cb_conf+="
+		$(use_enable gstreamer video )"
+	fi
+
+	econf ${cb_conf}
 }
 
 pkg_preinst() {
