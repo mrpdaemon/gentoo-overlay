@@ -7,7 +7,7 @@ EAPI=5
 VALA_MIN_API_VERSION="0.22"
 VALA_MAX_API_VERSION="0.24"
 
-inherit eutils gnome2 vala versionator
+inherit eutils autotools gnome2 vala versionator
 
 MY_PV=$(get_version_component_range 1-2)
 DESCRIPTION="Calendar application for GNOME 3"
@@ -26,12 +26,17 @@ RDEPEND="
 	>=dev-libs/libgee-0.10.5:0.8
 	>=net-libs/gnome-online-accounts-3.8.3:0/1
 	>=net-libs/libsoup-2.44.0:2.4
-	>=x11-libs/gtk+-3.10.7:3"
+	>=x11-libs/gtk+-3.12:3"
 DEPEND="${RDEPEND}
 	$(vala_depend)
 	>=dev-util/intltool-0.35.0"
 
-DOCS=( AUTHORS NEWS README THANKS )
+DOCS=( ChangeLog README  COPYING AUTHORS INSTALL NEWS )
+
+src_prepare() {
+	epatch "${FILESDIR}"/0.1.2-fix-docdir.patch
+	eautoreconf
+}
 
 src_compile() {
 	local valaver="$(vala_best_api_version)"
