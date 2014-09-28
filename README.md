@@ -16,6 +16,7 @@ This is my Gentoo overlay containing the following packages:
 * Polari - a GTK+3 IRC client
 * net-p2p/deluge-1.3.7
 * gnome-integration-spotify latest version
+* simplescreenrecorder - a screen recording application
 
 ## Installing
 
