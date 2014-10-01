@@ -4,8 +4,7 @@
 
 EAPI=5
 
-VALA_MIN_API_VERSION="0.22"
-VALA_MAX_API_VERSION="0.24"
+VALA_MIN_API_VERSION="0.24"
 
 inherit eutils autotools gnome2 vala versionator
 
@@ -24,9 +23,10 @@ RDEPEND="
 	>=dev-libs/gobject-introspection-1.38.0
 	>=dev-libs/libgdata-0.14.0
 	>=dev-libs/libgee-0.10.5:0.8
-	>=net-libs/gnome-online-accounts-3.8.3:0/1
-	>=net-libs/libsoup-2.44.0:2.4
-	>=x11-libs/gtk+-3.12:3"
+	>=net-libs/gnome-online-accounts-3.8.3
+	>=net-libs/libsoup-2.44.0
+	>=gnome-extra/evolution-data-server-3.8.5
+	>=x11-libs/gtk+-3.12.2:3"
 DEPEND="${RDEPEND}
 	$(vala_depend)
 	>=dev-util/intltool-0.35.0"
