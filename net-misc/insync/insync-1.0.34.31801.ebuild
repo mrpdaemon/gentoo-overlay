@@ -7,13 +7,13 @@ EAPI=5
 DESCRIPTION="Advanced cross-platform Google Drive client"
 HOMEPAGE="https://www.insynchq.com/"
 SRC_URI="
-	x86?      ( http://s.insynchq.com/builds/insync_${PV}_i386.deb )
-	amd64?    ( http://s.insynchq.com/builds/insync_${PV}_amd64.deb )
-	nautilus? ( http://s.insynchq.com/builds/insync-nautilus_${PV}_all.deb )
-	dolphin?  ( http://s.insynchq.com/builds/insync-dolphin_${PV}_all.deb )
-	thunar?   ( http://s.insynchq.com/builds/insync-thunar_${PV}_all.deb )
-	nemo?   ( http://s.insynchq.com/builds/insync-nemo_${PV}_all.deb )
-	caja?   ( http://s.insynchq.com/builds/insync-caja_${PV}_all.deb )"
+	x86?      ( http://s.insynchq.com/builds/insync_${PV}-precise_i386.deb )
+	amd64?    ( http://s.insynchq.com/builds/insync_${PV}-precise_amd64.deb )
+	nautilus? ( http://s.insynchq.com/builds/insync-nautilus_${PV}-precise_all.deb )
+	dolphin?  ( http://s.insynchq.com/builds/insync-dolphin_${PV}-precise_all.deb )
+	thunar?   ( http://s.insynchq.com/builds/insync-thunar_${PV}-precise_all.deb )
+	nemo?   ( http://s.insynchq.com/builds/insync-nemo_${PV}-precise_all.deb )
+	caja?   ( http://s.insynchq.com/builds/insync-caja_${PV}-precise_all.deb )"
 
 SLOT="0"
 KEYWORDS="-* ~x86 ~amd64"
@@ -31,23 +31,23 @@ src_unpack() {
 	cd "${S}"
 
 	if use amd64 ; then
-		unpack insync_"${PV}"_amd64.deb
+		unpack insync_"${PV}"-precise_amd64.deb
 	else
-		unpack insync_"${PV}"_i386.deb
+		unpack insync_"${PV}"-precise_i386.deb
 	fi
 
 	unpack ./data.tar.gz
 
 	if use nautilus ; then
-		unpack insync-nautilus_"${PV}"_all.deb
+		unpack insync-nautilus_"${PV}"-pricese_all.deb
 	elif use dolphin ; then
-		unpack insync-dolphin_"${PV}"_all.deb
+		unpack insync-dolphin_"${PV}"-precise_all.deb
 	elif use thunar ; then
-		unpack insync-thunar_"${PV}"_all.deb
+		unpack insync-thunar_"${PV}"-precise_all.deb
 	elif use nemo ; then
-		unpack insync-nemo_"${PV}"_all.deb
+		unpack insync-nemo_"${PV}"-precise_all.deb
 	elif use caja ; then
-		unpack insync-caja_"${PV}"_all.deb
+		unpack insync-caja_"${PV}"-precise_all.deb
 	fi
 
 	unpack ./data.tar.gz
