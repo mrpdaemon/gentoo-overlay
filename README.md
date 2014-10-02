@@ -17,7 +17,7 @@ This is my Gentoo overlay containing the following packages:
 * net-p2p/deluge-1.3.7
 * gnome-integration-spotify latest version
 * simplescreenrecorder - a screen recording application
-* gtk+-3.x with custom-cflags USE flag
+* gtk+ with custom-cflags USE flag
 
 ## Installing
 
