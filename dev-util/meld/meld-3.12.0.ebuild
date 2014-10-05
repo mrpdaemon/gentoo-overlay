@@ -38,6 +38,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-c-locale.patch
 	# Always use mrpdaemon gtksourceview theme
 	"${FILESDIR}"/${PN}-3.12.0-mrpdaemon-theme.patch
+	# Show deletions as red
+	"${FILESDIR}"/${PN}-red-delete-1.7.3.patch
 )
 
 python_compile_all() {
