@@ -14,8 +14,7 @@ This is my Gentoo overlay containing the following packages:
 * california - a calendar application for GNOME 3
 * gtkparasite - a GTK+ debugging tool
 * Polari - a GTK+3 IRC client
-* net-p2p/deluge-1.3.7
-* gnome-integration-spotify latest version
+* net-p2p/deluge-1.3.9
 * simplescreenrecorder - a screen recording application
 * gtk+ with custom-cflags USE flag
 
