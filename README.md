@@ -18,7 +18,6 @@ This is my Gentoo overlay containing the following packages:
 * simplescreenrecorder - a screen recording application
 * gtk+ with custom-cflags USE flag
 * gitg / libgit2-glib - a GTK+ git viewer
-* geary - email client latest version
 
 ## Installing
 
