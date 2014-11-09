@@ -11,8 +11,8 @@ inherit python-r1
 DESCRIPTION="EncFS mount utility for GNOME"
 HOMEPAGE="https://bitbucket.org/obensonne/gnome-encfs"
 
-SRC_URI="https://bitbucket.org/obensonne/${PN}/get/73ce773f5e56.zip"
-S="${WORKDIR}/obensonne-${PN}-73ce773f5e56"
+SRC_URI="https://bitbucket.org/obensonne/${PN}/get/331e2d9f8a0a.zip"
+S="${WORKDIR}/obensonne-${PN}-331e2d9f8a0a"
 
 LICENSE="GPL-3"
 SLOT="0"
