@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python{2_5,2_6,2_7} )
 
-inherit distutils-r1
+inherit gnome2 distutils-r1
 
 DESCRIPTION="GTK+ utility to awake machines using the Wake on LAN"
 HOMEPAGE="http://www.muflone.com/gwakeonlan/"
