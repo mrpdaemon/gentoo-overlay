@@ -2,17 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=5
 
-inherit distutils
+PYTHON_COMPAT=( python{2_5,2_6,2_7} )
+
+inherit distutils-r1
 
 DESCRIPTION="GTK+ utility to awake machines using the Wake on LAN"
-HOMEPAGE="http://code.google.com/p/gwakeonlan/"
-SRC_URI="http://gwakeonlan.googlecode.com/files/${PN}_${PV}_all.tar.gz"
+HOMEPAGE="http://www.muflone.com/gwakeonlan/"
+SRC_URI="https://github.com/muflone/gwakeonlan/archive/${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 RDEPEND="${DEPEND}
-		 dev-python/pygtk"
+		 dev-python/pygtk
+		 dev-python/pyxdg
+		 dev-python/pygobject:3"
