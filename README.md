@@ -17,6 +17,7 @@ This is my Gentoo overlay containing the following packages:
 * gtk+ with custom-cflags USE flag
 * gitg / libgit2-glib - a GTK+ git viewer
 * mail-client/geary 0.8.2
+* gnome-logs - systemd journal viewer for GNOME
 
 ## Installing
 
