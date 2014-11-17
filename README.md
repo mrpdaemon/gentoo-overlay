@@ -17,6 +17,7 @@ This is my Gentoo overlay containing the following packages:
 * gtk+ with custom-cflags USE flag
 * gitg / libgit2-glib - a GTK+ git viewer
 * gnome-logs - systemd journal viewer for GNOME
+* corebird - a GNOME 3 twitter client
 
 ## Installing
 
