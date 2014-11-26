@@ -1,0 +1,128 @@
+diff -crBN data/etc/default/plexmediaserver data2/etc/default/plexmediaserver
+*** data/etc/default/plexmediaserver	2011-07-27 11:25:36.000000000 +0200
+--- data2/etc/default/plexmediaserver	1970-01-01 01:00:00.000000000 +0100
+***************
+*** 1,13 ****
+- # default script for Plex Media Server
+- 
+- # the number of plugins that can run at the same time
+- PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS=6
+- 
+- # ulimit -s $PLEX_MEDIA_SERVER_MAX_STACK_SIZE
+- PLEX_MEDIA_SERVER_MAX_STACK_SIZE=3000
+- 
+- # where the mediaserver should store the transcodes
+- PLEX_MEDIA_SERVER_TMPDIR=/tmp
+- 
+- # uncomment to set it to something else
+- # PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR="${HOME}/Library/Application\ Support"
+--- 0 ----
+diff -crBN data/etc/init/plexmediaserver.conf data2/etc/init/plexmediaserver.conf
+*** data/etc/init/plexmediaserver.conf	2011-07-27 11:25:36.000000000 +0200
+--- data2/etc/init/plexmediaserver.conf	1970-01-01 01:00:00.000000000 +0100
+***************
+*** 1,22 ****
+- # plexpms - service job file
+- 
+- description "Plex Media Server"
+- author "http://www.plexapp.com/"
+- 
+- # When to start the service
+- start on runlevel [2345]
+- 
+- # When to stop the service
+- stop on runlevel [016]
+- 
+- # Automatically restart process if crashed
+- respawn
+- 
+- # Sets nice and ionice level for job
+- nice -5
+- 
+- # What to execute
+- script
+-         su -c /usr/sbin/start_pms plex
+- end script
+- 
+--- 0 ----
+diff -crBN data/etc/init.d/plex-media-server data2/etc/init.d/plex-media-server
+*** data/etc/init.d/plex-media-server  1970-01-01 01:00:00.000000000 +0100
+--- data2/etc/init.d/plex-media-server   2011-09-12 11:01:15.000000000 +0200
+***************
+*** 0 ****
+--- 1,24 ----
++ #!/sbin/runscript
++ 
++ depend() {
++         need avahi-daemon
++ }
++ 
++ start() {
++         ebegin "Starting Plex Media Server"
++         start-stop-daemon -S -m -p /var/run/plex-media-server.pid -1 /var/log/pms/out.log -2 /var/log/pms/err.log --quiet -u plex -N -5 -b --exec /usr/sbin/start_pms
++         eend $?
++ }
++ 
++ stop() {
++         ebegin "Stopping Plex Media Server"
++         # start-stop-daemon --stop --pidfile /var/run/plex-media-server.pid --quiet --exec /usr/sbin/start_pms
++         kill -- -`cat /var/run/plex-media-server.pid`
++         eend $?
++ }
++ 
++ restart() {
++         stop
++         sleep 3
++         start
++ }
+diff -crBN data/etc/plex/plexmediaserver.conf data2/etc/plex/plexmediaserver.conf
+*** data/etc/plex/plexmediaserver.conf	1970-01-01 01:00:00.000000000 +0100
+--- data2/etc/plex/plexmediaserver.conf	2011-09-12 10:15:11.000000000 +0200
+***************
+*** 0 ****
+--- 1,13 ----
++ # default script for Plex Media Server
++ 
++ # the number of plugins that can run at the same time
++ PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS=6
++ 
++ # ulimit -s $PLEX_MEDIA_SERVER_MAX_STACK_SIZE
++ PLEX_MEDIA_SERVER_MAX_STACK_SIZE=3000
++ 
++ # where the mediaserver should store the transcodes
++ PLEX_MEDIA_SERVER_TMPDIR=/tmp
++ 
++ # uncomment to set it to something else
++ # PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR="${HOME}/Library/Application\ Support"
+diff -crBN data/usr/sbin/start_pms data2/usr/sbin/start_pms
+*** data/usr/sbin/start_pms	2011-09-12 10:16:10.000000000 +0200
+--- data2/usr/sbin/start_pms	2011-09-12 10:15:15.000000000 +0200
+***************
+*** 7,13 ****
+  export PLEX_MEDIA_SERVER_TMPDIR=/tmp
+  export PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR="${HOME}/Library/Application Support"
+  
+! test -f /etc/default/plexmediaserver && . /etc/default/plexmediaserver
+  
+  export LD_LIBRARY_PATH="${PLEX_MEDIA_SERVER_HOME}"
+  export TMPDIR="${PLEX_MEDIA_SERVER_TMPDIR}"
+--- 7,13 ----
+  export PLEX_MEDIA_SERVER_TMPDIR=/tmp
+  export PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR="${HOME}/Library/Application Support"
+  
+! test -f /etc/plex/plexmediaserver.conf && . /etc/plex/plexmediaserver.conf
+  
+  export LD_LIBRARY_PATH="${PLEX_MEDIA_SERVER_HOME}"
+  export TMPDIR="${PLEX_MEDIA_SERVER_TMPDIR}"
+diff -crBN data/usr/share/doc/plexmediaserver/README.Debian data2/usr/share/doc/plexmediaserver/README.Debian
+*** data/usr/share/doc/plexmediaserver/README.Debian	2011-07-27 11:25:36.000000000 +0200
+--- data2/usr/share/doc/plexmediaserver/README.Debian	1970-01-01 01:00:00.000000000 +0100
+***************
+*** 1,6 ****
+- thecube-config for Debian
+- -------------------------
+- 
+- <possible notes regarding this package - if none, delete this file>
+- 
+-  -- Tobias Hieta <tru@unknown>  Tue, 07 Dec 2010 16:36:42 +0100
+--- 0 ----
