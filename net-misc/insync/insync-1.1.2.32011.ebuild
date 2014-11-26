@@ -39,7 +39,7 @@ src_unpack() {
 	unpack ./data.tar.gz
 
 	if use nautilus ; then
-		unpack insync-nautilus_"${PV}"-pricese_all.deb
+		unpack insync-nautilus_"${PV}"-precise_all.deb
 	elif use dolphin ; then
 		unpack insync-dolphin_"${PV}"-precise_all.deb
 	elif use thunar ; then
