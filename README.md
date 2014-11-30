@@ -18,6 +18,7 @@ This is my Gentoo overlay containing the following packages:
 * gnome-logs - systemd journal viewer for GNOME
 * corebird - a GNOME 3 twitter client
 * plex-media-server - a media server for home collections
+* evolution-ews - Evolution exchange plugin
 
 ## Installing
 
