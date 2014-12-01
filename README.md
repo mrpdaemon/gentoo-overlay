@@ -12,7 +12,6 @@ This is my Gentoo overlay containing the following packages:
 * Turkish language dictionary support for aspell/hunspell
 * california - a calendar application for GNOME 3
 * gtkparasite - a GTK+ debugging tool
-* deluge - a BitTorrent client in python
 * simplescreenrecorder - a screen recording application
 * gtk+ with custom-cflags USE flag
 * gnome-logs - systemd journal viewer for GNOME
