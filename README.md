@@ -18,7 +18,6 @@ This is my Gentoo overlay containing the following packages:
 * corebird - a GNOME 3 twitter client
 * plex-media-server - a media server for home collections
 * evolution-ews - Evolution exchange plugin
-* dev-vcs/gitg - GTK+3 git repository viewer
 
 ## Installing
 
