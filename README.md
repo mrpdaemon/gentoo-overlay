@@ -10,7 +10,6 @@ This is my Gentoo overlay containing the following packages:
 * gtksourceview-2 with patch to change default style to mrpdaemon/gtksourceview-theme
 * InSync Google Drive sync client
 * Turkish language dictionary support for aspell/hunspell
-* california - a calendar application for GNOME 3
 * gtkparasite - a GTK+ debugging tool
 * simplescreenrecorder - a screen recording application
 * gtk+ with custom-cflags USE flag
