@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit autotools multilib-minimal
+inherit autotools flag-o-matic multilib-minimal
 
 if [[ ${PV} = 9999 ]]; then
 	inherit git-2
@@ -22,15 +22,24 @@ if [[ ${PV} = 9999 ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/MaartenBaert/${PKGNAME}/archive/${PV}.tar.gz"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 SLOT="0"
-IUSE="debug jack mp3 pulseaudio theora vorbis vpx x264"
+IUSE="debug jack mp3 pulseaudio theora vorbis vpx x264 +qt4 qt5"
+REQUIRED_USE="^^ ( qt4 qt5 )"
 
 RDEPEND="
-	dev-qt/qtcore
-	dev-qt/qtgui
+	qt4? (
+		>=dev-qt/qtcore-4.8.0:4
+		>=dev-qt/qtgui-4.8.0:4
+	)
+	qt5? (
+		>=dev-qt/qtcore-5.1.0:5
+		>=dev-qt/qtgui-5.1.0:5
+		>=dev-qt/qtwidgets-5.1.0:5
+		>=dev-qt/qtx11extras-5.1.0:5
+	)
 	virtual/glu[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib
 	media-libs/mesa[${MULTILIB_USEDEP}]
@@ -70,6 +79,11 @@ pkg_setup() {
 		ewarn "record videos with x264."
 		ewarn
 	fi
+
+	# QT requires -fPIC. Compile fails otherwise.
+	# Recently removed from the default compile options upstream
+	# https://github.com/MaartenBaert/ssr/commit/25fe1743058f0d1f95f6fbb39014b6ac146b5180
+	append-flags -fPIC
 }
 
 multilib_src_configure() {
@@ -77,8 +91,9 @@ multilib_src_configure() {
 	local myconf=(
 		--enable-dependency-tracking
 		$(multilib_native_use_enable debug assert)
-		$(multilib_native_use_enable pulseaudio)
-		$(multilib_native_use_enable jack)
+		$(multilib_native_use_with pulseaudio)
+		$(multilib_native_use_with jack)
+		$(multilib_native_use_with qt5)
 	)
 
 	# libav doesn't have AVFrame::channels
