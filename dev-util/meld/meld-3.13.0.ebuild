@@ -20,12 +20,12 @@ IUSE=""
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-libs/glib-2.34:2
+	>=dev-libs/glib-2.36:2
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	>=dev-python/pygobject-3.8:3[cairo,${PYTHON_USEDEP}]
 	gnome-base/gsettings-desktop-schemas
 	>=x11-libs/gtk+-3.6:3[introspection]
-	>=x11-libs/gtksourceview-3.6:3.0[introspection]
+	>=x11-libs/gtksourceview-3.10:3.0[introspection]
 	x11-themes/hicolor-icon-theme
 "
 DEPEND="${RDEPEND}
@@ -35,8 +35,6 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	# Always use mrpdaemon gtksourceview theme
-	"${FILESDIR}"/${PN}-3.12.0-mrpdaemon-theme.patch
 	# Show deletions as red
 	"${FILESDIR}"/${PN}-red-delete-1.7.3.patch
 )
