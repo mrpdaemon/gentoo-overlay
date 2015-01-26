@@ -16,7 +16,6 @@ This is my Gentoo overlay containing the following packages:
 * plex-media-server - a media server for home collections
 * evolution-ews - Evolution exchange plugin
 * geary - GTK+3 mail client
-* shotwell - GTK+3 photo organizer (with vala 0.26 fix)
 
 ## Installing
 
