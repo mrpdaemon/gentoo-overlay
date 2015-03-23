@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/aspell/aspell-0.60.6.1.ebuild,v 1.9 2012/05/17 20:47:36 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/aspell/aspell-0.60.6.1-r1.ebuild,v 1.1 2015/03/21 08:48:48 jlec Exp $
 
-EAPI=4
+EAPI=5
 
-inherit libtool eutils flag-o-matic autotools
+inherit autotools eutils flag-o-matic libtool toolchain-funcs
 
 DESCRIPTION="A spell checker replacement for ispell"
 HOMEPAGE="http://aspell.net/"
@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/aspell/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="nls"
 
 PDEPEND="app-dicts/aspell-en"
@@ -33,10 +33,12 @@ for lang in ${LANGS}; do
 done
 unset dep
 
-COMMON_DEPEND=">=sys-libs/ncurses-5.2
+COMMON_DEPEND="
+	>=sys-libs/ncurses-5.2
 	nls? ( virtual/libintl )"
 
 DEPEND="${COMMON_DEPEND}
+	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
 # English dictionary 0.5 is incompatible with aspell-0.6
@@ -44,18 +46,37 @@ RDEPEND="${COMMON_DEPEND}
 	!=app-dicts/aspell-en-0.5*"
 
 src_prepare() {
-	#epatch "${FILESDIR}/${PN}-0.60.3-templateinstantiations.patch"
-	epatch "${FILESDIR}/${PN}-0.60.5-nls.patch"
-	epatch "${FILESDIR}/${PN}-0.60.5-solaris.patch"
-	epatch "${FILESDIR}/${PN}-0.60.6-darwin-bundles.patch"
+	# fix for bug #467602
+	if has_version ">=sys-devel/automake-1.13" ; then
+		sed -i -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/g' \
+			"${S}"/configure.ac || die
+	fi
+
+	epatch \
+		"${FILESDIR}/${PN}-0.60.5-nls.patch" \
+		"${FILESDIR}/${PN}-0.60.5-solaris.patch" \
+		"${FILESDIR}/${PN}-0.60.6-darwin-bundles.patch"
 
 	rm m4/lt* m4/libtool.m4
 	eautoreconf
 	elibtoolize --reverse-deps
+
+	# Parallel install of libtool libraries doesn't always work.
+	# https://lists.gnu.org/archive/html/libtool/2011-03/msg00003.html
+	# This has to be after automake has run so that we don't clobber
+	# the default target that automake creates for us.
+	echo 'install-filterLTLIBRARIES: install-libLTLIBRARIES' >> Makefile.in || die
+
 }
 
 src_configure() {
-	econf \
+	if has_version "sys-libs/ncurses[unicode]" ; then
+		CURSES_LIB="$($(tc-getPKG_CONFIG) --libs ncursesw)"
+	else
+		CURSES_LIB="$($(tc-getPKG_CONFIG) --libs ncurses)"
+	fi
+
+	CURSES_LIB="${CURSES_LIB}" econf \
 		$(use_enable nls) \
 		--disable-static \
 		--sysconfdir="${EPREFIX}"/etc/aspell \
@@ -71,11 +92,10 @@ src_install() {
 	dodoc "${S}"/examples/*.c
 
 	# install ispell/aspell compatibility scripts
-	exeinto /usr/bin
-	newexe scripts/ispell ispell-aspell
-	newexe scripts/spell spell-aspell
+	newbin scripts/ispell ispell-aspell
+	newbin scripts/spell spell-aspell
 
-	find "${ED}" -name '*.la' -exec rm -f {} +
+	prune_libtool_files
 }
 
 pkg_postinst() {
