@@ -15,7 +15,8 @@ This is my Gentoo overlay containing the following packages:
 * corebird - a GNOME 3 twitter client
 * plex-media-server - a media server for home collections
 * geary - GTK+3 mail client
-* california -a GTK+3 calendar application
+* california - a GTK+3 calendar application
+* shotwell - a GTK+3 photo organizer
 
 ## Installing
 
