@@ -26,7 +26,7 @@ RDEPEND="dev-db/sqlite:3
 	gstreamer? ( media-plugins/gst-plugins-meta:1.0[X,ffmpeg] )
 	>=net-libs/libsoup-2.42.3.1
 	>=net-libs/rest-0.7.91:0.7
-	>=x11-libs/gtk+-3.12:3"
+	>=x11-libs/gtk+-3.14:3"
 DEPEND="${RDEPEND}
 	$(vala_depend)
 	>=dev-util/intltool-0.40
