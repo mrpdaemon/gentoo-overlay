@@ -11,7 +11,7 @@ inherit eutils fdo-mime gnome2-utils vala cmake-utils
 MY_P=${P/_pre/pr}
 DESCRIPTION="A lightweight, easy-to-use, feature-rich email client"
 HOMEPAGE="http://www.yorba.org/projects/geary/"
-SRC_URI="ftp://ftp.gnome.org/pub/GNOME/sources/geary/${PV:0:3}/${MY_P}.tar.xz"
+SRC_URI="ftp://ftp.gnome.org/pub/GNOME/sources/geary/${PV:0:4}/${MY_P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
