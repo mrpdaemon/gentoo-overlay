@@ -17,6 +17,7 @@ This is my Gentoo overlay containing the following packages:
 * geary - GTK+3 mail client
 * california - a GTK+3 calendar application
 * shotwell - a GTK+3 photo organizer
+* telegram-bin - Telegram IM desktop app
 
 ## Installing
 
