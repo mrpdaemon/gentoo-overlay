@@ -17,7 +17,7 @@ SRC_URI="
 
 SLOT="0"
 KEYWORDS="-* ~x86 ~amd64"
-DEPEND=""
+DEPEND="<dev-libs/libevent-2.1"
 RDEPEND="${DEPEND}
 	nautilus? ( dev-python/nautilus-python )
 	dolphin? ( kde-base/dolphin )
