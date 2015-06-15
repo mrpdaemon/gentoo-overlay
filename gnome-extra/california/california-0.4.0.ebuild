@@ -23,7 +23,7 @@ RDEPEND="
 	>=dev-libs/libgee-0.10.5:0.8
 	>=net-libs/gnome-online-accounts-3.8.3
 	>=net-libs/libsoup-2.44:2.4
-	>=gnome-extra/evolution-data-server-3.8
+	>=gnome-extra/evolution-data-server-3.13.9
 	>=x11-libs/gtk+-3.12.2:3
 	x11-misc/xdg-utils
 "
@@ -36,6 +36,7 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
+	epatch "${FILESDIR}/california-0.4-gnome-3.16.patch"
 	vala_src_prepare
 	gnome2_src_prepare
 }
