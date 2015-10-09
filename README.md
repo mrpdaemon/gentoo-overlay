@@ -18,6 +18,7 @@ This is my Gentoo overlay containing the following packages:
 * california - a GTK+3 calendar application
 * shotwell - a GTK+3 photo organizer
 * telegram-bin - Telegram IM desktop app
+* latest broadcom-sta drivers
 
 ## Installing
 
