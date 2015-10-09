@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit eutils user
 
-MAGIC="1406-8403350"
+MAGIC="1464-4ccd2ca"
 # URI_PRE="http://plexapp.com/repo/pool/main/p/plexmediaserver/plexmediaserver_${PV}.${MAGIC}_"
 # this does not seem to work atm(/anymore?)
 URI_PRE="http://downloads.plexapp.com/plex-media-server/${PV}.${MAGIC}/plexmediaserver_${PV}.${MAGIC}_"
