@@ -1,12 +1,12 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/shotwell/shotwell-0.21.0.ebuild,v 1.1 2015/02/22 11:37:25 jlec Exp $
+# $Id$
 
 EAPI=5
 
 GCONF_DEBUG="no"
-VALA_MIN_API_VERSION="0.26"
-VALA_MAX_API_VERSION="0.26"
+VALA_MIN_API_VERSION="0.30"
+VALA_MAX_API_VERSION="0.30"
 
 inherit eutils gnome2 multilib toolchain-funcs vala versionator
 
@@ -25,9 +25,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 CORE_SUPPORTED_LANGUAGES="
-	af ar as ast bg bn bn_IN ca cs da de el en_GB eo es et eu fi fr gd gl gu he
-	hi hr hu ia id it ja kk km kn ko ky lt lv mk ml mr nb nl nn or pa pl pt
-	pt_BR ro ru sk sl sr sv ta te th tr uk vi zh_CN zh_HK zh_TW"
+	af ar as ast bg bn bn_IN bs ca cs da de el en_GB eo es et eu fi fr gd gl gu
+	he hi hr hu ia id it ja kk km kn ko ky lt lv mk ml mr nb nl nn or pa pl pt
+	pt_BR ro ru sk sl sr sr@latin sv ta te th tr uk vi zh_CN zh_HK zh_TW"
 
 for x in ${CORE_SUPPORTED_LANGUAGES}; do
 	IUSE+="linguas_${x} "
@@ -53,7 +53,7 @@ RDEPEND="
 	>=media-libs/libraw-0.13.2:=
 	>=net-libs/libsoup-2.26.0:2.4
 	>=net-libs/rest-0.7:0.7
-	>=net-libs/webkit-gtk-1.4:3
+	net-libs/webkit-gtk:4
 	virtual/libgudev:=[introspection]
 	>=x11-libs/gtk+-3.12.2:3[X]"
 DEPEND="${RDEPEND}
@@ -78,12 +78,21 @@ pkg_setup() {
 }
 
 src_prepare() {
+	local x
+	local linguas="en_GB ${LINGUAS}"
 	vala_src_prepare
 	sed \
 		-e 's|CFLAGS :|CFLAGS +|g' \
 		-i plugins/Makefile.plugin.mk || die
 	epatch \
 		"${FILESDIR}"/${PN}-0.13.1-ldflags.patch
+
+	# remove disabled lenguages from build
+	for x in ${CORE_SUPPORTED_LANGUAGES}; do
+		if ! has ${x} ${linguas}; then
+			sed -i "/^${x}$/d" "${S}"/po/LINGUAS || die
+		fi
+	done
 }
 
 src_configure() {
@@ -100,11 +109,7 @@ src_compile() {
 src_install() {
 	local res
 	gnome2_src_install
-	for x in ${LANGS}; do
-		if ! has ${x} ${LINGUAS}; then
-			find "${D}"/usr/share/locale/${x} -type f -exec rm {} + || die
-		fi
-	done
+
 	doman "${DISTDIR}"/${PN}.1
 	for res in 16 22 24 32 48 256; do
 		doicon -s ${res} "${WORKDIR}"/${res}x${res}/*
