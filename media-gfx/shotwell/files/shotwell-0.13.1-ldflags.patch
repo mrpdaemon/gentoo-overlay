@@ -20,9 +20,9 @@ Index: shotwell-0.13.1/plugins/Makefile.plugin.mk
 @@ -54,7 +54,7 @@ $(CFILES): .stamp
  	@
  
- $(OFILES): %.o: %.c $(CFILES)
--	$(CC) -c $(CFLAGS) $(DEFINES) -I../.. $(CFILES)
-+	$(CC) -c $(CFLAGS) $(LDFLAGS) $(DEFINES) -I../.. $(CFILES)
+ .c.o:
+-	$(CC) -c $(CFLAGS) $(DEFINES) -I../.. $<
++	$(CC) -c $(CFLAGS) $(LDFLAGS) $(DEFINES) -I../.. $<
  
  $(PLUGIN).so: $(OFILES)
- 	$(CC) $(CFLAGS) $(LDFLAGS) -shared $(OFILES) $(LIBS) -o $@
+ 	$(CC) $(LDFLAGS) -shared $(OFILES) $(LIBS) -o $@
