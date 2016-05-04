@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils
+inherit eutils gnome2-utils
 
 DESCRIPTION="A tiling terminal emulator for Linux using GTK+ 3"
 HOMEPAGE="https://github.com/gnunn1/terminix"
