@@ -40,10 +40,10 @@ pkg_preinst() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
-	gnome2_schemas_update
+	glib-compile-schemas /usr/share/glib-2.0/schemas
 }
 
 pkg_postrm() {
 	gnome2_icon_cache_update
-	gnome2_schemas_update
+	glib-compile-schemas /usr/share/glib-2.0/schemas
 }
