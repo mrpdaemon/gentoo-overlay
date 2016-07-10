@@ -5,8 +5,8 @@
 EAPI=5
 
 GCONF_DEBUG="no"
-VALA_MIN_API_VERSION="0.30"
-VALA_MAX_API_VERSION="0.30"
+VALA_MIN_API_VERSION="0.28"
+VALA_MAX_API_VERSION="0.32"
 
 inherit eutils gnome2 multilib toolchain-funcs vala versionator
 
@@ -49,7 +49,7 @@ RDEPEND="
 	media-libs/gstreamer:1.0
 	media-libs/lcms:2
 	>=media-libs/libexif-0.6.16:=
-	>=media-libs/libgphoto2-2.4.2:=
+	>=media-libs/libgphoto2-2.5.0:=
 	>=media-libs/libraw-0.13.2:=
 	>=net-libs/libsoup-2.26.0:2.4
 	>=net-libs/rest-0.7:0.7
@@ -85,7 +85,7 @@ src_prepare() {
 		-e 's|CFLAGS :|CFLAGS +|g' \
 		-i plugins/Makefile.plugin.mk || die
 	epatch \
-		"${FILESDIR}"/${PN}-0.13.1-ldflags.patch
+		"${FILESDIR}"/${PN}-0.23.2-ldflags.patch
 
 	# remove disabled lenguages from build
 	for x in ${CORE_SUPPORTED_LANGUAGES}; do
@@ -103,7 +103,7 @@ src_configure() {
 
 src_compile() {
 	local valaver="$(vala_best_api_version)"
-	emake VALAC="$(type -p valac-${valaver})"
+	emake VALAC="$(type -p valac-${valaver})" -j1
 }
 
 src_install() {
