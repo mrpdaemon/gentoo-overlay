@@ -60,7 +60,7 @@ DEPEND="${RDEPEND}
 	$(vala_depend)
 	>=sys-devel/m4-1.4.13"
 
-DOCS=( AUTHORS MAINTAINERS NEWS README THANKS )
+DOCS=( AUTHORS NEWS README THANKS )
 
 # This probably comes from libraries that
 # shotwell-video-thumbnailer links to.
@@ -71,21 +71,14 @@ pkg_setup() {
 	tc-export CC
 	G2CONF="${G2CONF}
 		--disable-schemas-compile
-		--disable-desktop-update
-		--disable-icon-update
 		--prefix=/usr
-		--lib=$(get_libdir)"
+		--libdir=/usr/$(get_libdir)"
 }
 
 src_prepare() {
 	local x
 	local linguas="en_GB ${LINGUAS}"
 	vala_src_prepare
-	sed \
-		-e 's|CFLAGS :|CFLAGS +|g' \
-		-i plugins/Makefile.plugin.mk || die
-	epatch \
-		"${FILESDIR}"/${PN}-0.23.2-ldflags.patch
 
 	# remove disabled lenguages from build
 	for x in ${CORE_SUPPORTED_LANGUAGES}; do
@@ -103,7 +96,7 @@ src_configure() {
 
 src_compile() {
 	local valaver="$(vala_best_api_version)"
-	emake VALAC="$(type -p valac-${valaver})" -j1
+	emake VALAC="$(type -p valac-${valaver})"
 }
 
 src_install() {
