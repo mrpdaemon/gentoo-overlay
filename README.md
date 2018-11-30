@@ -1,6 +1,8 @@
 mrpdaemon Gentoo overlay
 ========================
 
+Note that this project is no longer maintained.
+
 This is my Gentoo overlay containing the following packages:
 
 * Scripts I use for maintaining my Gentoo systems (mrpdaemon-gentoo-scripts)
